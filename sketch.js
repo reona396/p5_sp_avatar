@@ -67,13 +67,13 @@ function setup() {
   ox = width / 2;
   oy = height * 1.25;
 
-  imgScale = height / 1000;
+  imgScale = height / imgs[0][0].height;
   ydelta = -oy + 1000 * imgScale * 0.95;
 }
 
 function draw() {
   // background("#E7ECF2");
-  background(100, 0, 0);
+  background(0, 0, 100);
 
   if (!isStarted) {
     text("Touch to Start", width / 2, height / 2);
@@ -86,7 +86,7 @@ function draw() {
     translate(ox, oy);
     rotate(yurashiAngle);
 
-    scale(imgScale);
+    // scale(imgScale);
 
     // let y = -oy - imgs[0][0].height * imgScale * 0.5 + height + tateYurashiAmp * abs(sin(yurashiStep));
     let y = ydelta + tateYurashiAmp * abs(sin(yurashiStep));
