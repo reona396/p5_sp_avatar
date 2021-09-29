@@ -72,7 +72,8 @@ function setup() {
 }
 
 function draw() {
-  background("#E7ECF2");
+  // background("#E7ECF2");
+  background(100, 0, 0);
 
   if (!isStarted) {
     text("Touch to Start", width / 2, height / 2);
