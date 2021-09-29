@@ -26,13 +26,15 @@ let metojiSeconds = 0.16;
   ゆらし系
 */
 // ゆらす角度の幅(単位:度) ゼロを中心に-yurashiAmpからyurashiAmpの間ゆれる
-let yurashiAmp = 0.5;
+let yurashiAmp = 0.75;
 // ゆらすスピード
 let yurashiSpeed = 1.5;
 // 縦方向にゆらす幅
-let tateYurashiAmp = 1.5;
+let tateYurashiAmp = 5.5;
 
 let isStarted = false;
+
+let imgScale = 1.0;
 
 function preload() {
   let girls = [];
@@ -62,7 +64,7 @@ function setup() {
   metojiSeconds *= 60;
 
   ox = width / 2;
-  oy = height * 2;
+  oy = height * 1.25;
 }
 
 function draw() {
@@ -78,13 +80,11 @@ function draw() {
     push();
     translate(ox, oy);
     rotate(yurashiAngle);
-    if (avatarIndex === 0) {
-      scale(0.8);
-    } else {
-      scale(0.85);
-    }
+    imgScale = height / 1000;
+    scale(imgScale);
 
-    let y = -oy - imgs[0][0].height / 2 + height + tateYurashiAmp * abs(sin(yurashiStep));
+    // let y = -oy - imgs[0][0].height * imgScale * 0.5 + height + tateYurashiAmp * abs(sin(yurashiStep));
+    let y = -oy + 1000 * imgScale * 0.95 + tateYurashiAmp * abs(sin(yurashiStep));
     image(imgs[avatarIndex][displayIndex], 0, y);
     pop();
 
