@@ -88,7 +88,7 @@ function draw() {
     image(imgs[avatarIndex][displayIndex], 0, y);
     pop();
 
-    let micVol = mic.getLevel();
+    let micVol = 0.02; //mic.getLevel();
 
     // しゃべっている時
     if (micVol > 0.015) {
@@ -142,10 +142,10 @@ function draw() {
 
 function mousePressed() {
   if (!isStarted) {
-    userStartAudio();
+    // userStartAudio();
 
-    mic = new p5.AudioIn();
-    mic.start();
+    // mic = new p5.AudioIn();
+    // mic.start();
     isStarted = true;
   } else {
     avatarIndex = avatarIndex === 0 ? 1 : 0;
