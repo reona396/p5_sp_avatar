@@ -35,6 +35,7 @@ let tateYurashiAmp = 5.5;
 let isStarted = false;
 
 let imgScale = 1.0;
+let ydelta = 0;
 
 function preload() {
   let girls = [];
@@ -65,6 +66,9 @@ function setup() {
 
   ox = width / 2;
   oy = height * 1.25;
+
+  imgScale = height / 1000;
+  ydelta = -oy + 1000 * imgScale * 0.95;
 }
 
 function draw() {
@@ -80,11 +84,11 @@ function draw() {
     push();
     translate(ox, oy);
     rotate(yurashiAngle);
-    imgScale = height / 1000;
+
     scale(imgScale);
 
     // let y = -oy - imgs[0][0].height * imgScale * 0.5 + height + tateYurashiAmp * abs(sin(yurashiStep));
-    let y = -oy + 1000 * imgScale * 0.95 + tateYurashiAmp * abs(sin(yurashiStep));
+    let y = ydelta + tateYurashiAmp * abs(sin(yurashiStep));
     image(imgs[avatarIndex][displayIndex], 0, y);
     pop();
 
